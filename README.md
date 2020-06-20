@@ -7,8 +7,7 @@ Udacity Data Science Capstone Project
 2. [Data](#Data)
 3. [Required packages](#Requiredpackages)
 4. [Results](#Results)
-5. [Screenshots](#Screenshots)
-6. [Acknowledgements](#Licensing)
+5. [Acknowledgements](#Licensing)
 
 ## Motivation<a name="Motivation"></a>
 
@@ -90,6 +89,22 @@ The following packages must be installed:
 
 ## Results <a name="Results"></a>
 
-## Screeshots <a name="Screenshots"></a>
+* Because the churned users are a fairly imbalanced subset, F1 score is the metric we want to optimize as it gives a better measure of the incorrectly classified cases than the Accuracy Metric, penelazing the extreme values. 
+
+* The best model was **Gradient Boosted Trees** (best F1-Score), which uses an ensemble of decision trees to predict the target label. Although all models have a similar accuracy, the Gradient Boosted Trees stands out for having the best F1-Score. After fine tuning the parameters, the best version of the Gradient Boosted Trees obtained an **accuracy equal to 73,25% and an F1 Score equal to 0.7126.**
+  
+* If our decision metric was seeking the balance between the best results and the processing efficiency (better training time) this would probably not be our option. The **Logistic Regression model**, for example, has a more interesting processing time. 
+
+* However, it should be noted that no model has shown efficiency in "time to train", taking a long time even using technology such as Spark to distribute computing across several nodes. When working with larger datasets, time efficiency it would be an important factor to consider and improve.
+
+* When looking at the feature importance, the **average number of songs per session** stands out, what means that this feature has a higher influence in user's churn. This metric mirrors the customer's engagement with the application, and therefore customers who on average listen to less songs are more likely to abandon the service.
+
+* The second most relevant feature is the **number of thumb downs**. These types of events are also good indications of customer dissatisfaction. It may be the case that the customer does not like the songs that are being recommended.
+
+* The third most important feature also seems quite relevant, as it represents the **number of times the customer has sought help** in the application.
+
+* Features such as level, number of friends added, number of downgrades or gender are not good indicators of customer's churn.
 
 ## Acknowledgements <a name="Licensing"></a>
+
+* Thanks to Udacity for all the useful insights and interesting challenges!
