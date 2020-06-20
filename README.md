@@ -19,21 +19,21 @@ For that purpose it was needed to understand data and then generate meaningfull 
 The project is organized with the following structure:
 
 1. Loading and cleaning data
-  i. Load dataset
-  ii. Cleaning missing and invalid data
+   1. Load dataset
+   2. Cleaning missing and invalid data
   
-2.Exploratory Data Analysis
-  i. Define Churn & Downgrades from the original features
-  ii. Explore data (comparing behaviours between both type of users: those who churned and those who didn't)
+2. Exploratory Data Analysis
+   1. Define Churn & Downgrades from the original features
+   2. Explore data (comparing behaviours between both type of users: those who churned and those who didn't)
 
 3. Feature Engineering
-  i. Create new meaningful features for each user
-  ii. Create a function to perform all ETL tasks at once
+   1. Create new meaningful features for each user
+   2. Create a function to perform all ETL tasks at once
   
 4. Model training and Prediction
-  i. Split data into training and testing data sets
-  ii. Train several classification models & Hyperparameter tunning with Grid Search
-  iii. Select best machine learning model based on f1score
+   1. Split data into training and testing data sets
+   2. Train several classification models & Hyperparameter tunning with Grid Search
+   3. Select best machine learning model based on f1score
 
 ## Data<a name="Data"></a>
 
@@ -58,7 +58,7 @@ Every event is a row in the dataset and collects the following information:
  |-- status: long 
  |-- ts: long 
  |-- userAgent: string
- |-- userId: string`
+ |-- userId: string` 
  
 As an online service, the amount of data collected every minute is huge. 
 For this reason, and due to the limitation of computational capacity to work with larger datasets, in this project we only used a medium sample, with about 4GB.
