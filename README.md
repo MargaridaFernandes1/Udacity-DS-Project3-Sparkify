@@ -92,16 +92,13 @@ To see in detail all the results and conclusions you can check this [medium post
 
 We trained 5 different classifiers, fine-tuning the hyper-parameters with Grid Search, and then compared 3 performance metrics. This was the outcome:
 
-
-
-
-
+![Performance Metrics Table](https://github.com/MargaridaFernandes1/Udacity_Project3_Sparkify/blob/master/Performance_metrics_table.PNG)
 
 The best classifier was **Gradient Boosted Trees** with an ensemble of 5 decision trees, because it showed the best F1 score. With this we obtained an accuracy equal to 75,58% and an F1 Score equal to 0.7006.
 
 Then we analyzed the importance of each variable, in order to understand which features have grater influence in user’s churn.
 
-
+![Features Weight](https://github.com/MargaridaFernandes1/Udacity_Project3_Sparkify/blob/master/features%20weigh.png)
 
 When looking at the feature importance, the **average number of songs per session** stands out. This means that customers who on average listen to less songs are more likely to churn. The second most relevant feature is the **number of thumb downs**. These types of events are good indications of customer dissatisfaction. The third most important feature also seems quite relevant, as it represents the **total number of sessions per user**.
 
