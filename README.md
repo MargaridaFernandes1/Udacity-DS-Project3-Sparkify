@@ -11,7 +11,7 @@ Udacity Data Science Capstone Project
 
 ## Motivation<a name="Motivation"></a>
 
-Sparkify is a music streaming service (similar to Apple Music and Spotify) where customers can hear their favourite musics. This service can be used for free, but some customers prefer to have a premium (paid) account, which allows to eliminate advertising between songs and other benefits.
+Sparkify is a music streaming service app (similar to Apple Music and Spotify) where customers can hear their favourite musics. This service can be used for free, but some customers prefer to have a premium (paid) account, which allows to eliminate advertising between songs and other benefits.
 The purpose of this project is to predict the customer's churn based on their behavior and previous activities. 
 For that purpose it was needed to understand data and then generate meaningfull features that characterize user experience in Sparkify, so that we can use a machine learning model to predict which customers are likely to churn.
 
@@ -39,42 +39,41 @@ The project is organized with the following structure:
 The available data corresponds to the log of events, measuring every interaction and activity that users perform in the application. 
 Every event is a row in the dataset and collects the following information:
 
-`root
- |-- artist: string
- |-- auth: string 
- |-- firstName: string 
- |-- gender: string 
- |-- itemInSession: long 
- |-- lastName: string 
- |-- length: double
- |-- level: string 
- |-- location: string 
- |-- method: string 
- |-- page: string 
- |-- registration: long 
- |-- sessionId: long
- |-- song: string 
- |-- status: long 
- |-- ts: long 
- |-- userAgent: string
- |-- userId: string` 
+root <br/>
+ |-- artist: string <br/>
+ |-- auth: string <br/>
+ |-- firstName: string <br/>
+ |-- gender: string <br/>
+ |-- itemInSession: long <br/>
+ |-- lastName: string <br/>
+ |-- length: double <br/>
+ |-- level: string <br/>
+ |-- location: string <br/>
+ |-- method: string <br/>
+ |-- page: string <br/>
+ |-- registration: long <br/> 
+ |-- sessionId: long <br/>
+ |-- song: string <br/>
+ |-- status: long <br/>
+ |-- ts: long <br/>
+ |-- userAgent: string <br/>
+ |-- userId: string <br/>
  
 As an online service, the amount of data collected every minute is huge. 
 For this reason, and due to the limitation of computational capacity to work with larger datasets, in this project we only used a medium sample, with about 4GB.
 
 In this repository you can find the following files:
-`Udacity_Sparkify
- |-- Sparkify(IBM).ipynb
- |-- final_data_sparkify.csv.zip
- |-- medium_sparkify_event_data.zip
- |-- mini_sparkify_event_data.zip
- |-- Sparkify(IBM).html
 
-* Sparkify(IBM).ipynb: Notebook with all the scripts used to analyse data and to address the churn prediction problem
-* data_final_spark.csv.zip: final data set after feature engineering (in spark format) - must be unzipped!
+Udacity_Sparkify <br/>
+ |-- Sparkify_medium_final.ipynb <br/>
+ |-- Sparkify_medium_final.html <br/>
+ |-- medium_sparkify_event_data.zip <br/>
+ |-- mini_sparkify_event_data.zip <br/>
+
+* Sparkify_medium_final.ipynb: Notebook with all the scripts used to analyse data and to address the churn prediction problem
+* Sparkify_medium_final.html: Same notebook in .html format
 * medium_sparkify_event_data.zip: meidum subset (4Gb) of the full dataset available (12GB) - must be unzipped!
 * mini_sparkify_event_data.zip: small subset (128MB) of the full dataset available (12GB) - must be unzipped!
-* Sparkify(IBM).html: .html version of the jupyter notebook
 
 ## Required packages <a name="Requiredpackages"></a>
 
@@ -89,21 +88,23 @@ The following packages must be installed:
 
 ## Results <a name="Results"></a>
 
-* Because the churned users are a fairly imbalanced subset, F1 score is the metric we want to optimize as it gives a better measure of the incorrectly classified cases than the Accuracy Metric, penelazing the extreme values. 
+To see in detail all the results and conclusions you can check this [medium post](https://medium.com/@margarida.ampf/how-do-you-know-that-your-customers-will-churn-even-before-they-know-it-1c377fa8adfa).
 
-* The best model was **Gradient Boosted Trees** (best F1-Score), which uses an ensemble of decision trees to predict the target label. Although all models have a similar accuracy, the Gradient Boosted Trees stands out for having the best F1-Score. After fine tuning the parameters, the best version of the Gradient Boosted Trees obtained an **accuracy equal to 73,25% and an F1 Score equal to 0.7126.**
-  
-* If our decision metric was seeking the balance between the best results and the processing efficiency (better training time) this would probably not be our option. The **Logistic Regression model**, for example, has a more interesting processing time. 
+We trained 5 different classifiers, fine-tuning the hyper-parameters with Grid Search, and then compared 3 performance metrics. This was the outcome:
 
-* However, it should be noted that no model has shown efficiency in "time to train", taking a long time even using technology such as Spark to distribute computing across several nodes. When working with larger datasets, time efficiency it would be an important factor to consider and improve.
 
-* When looking at the feature importance, the **average number of songs per session** stands out, what means that this feature has a higher influence in user's churn. This metric mirrors the customer's engagement with the application, and therefore customers who on average listen to less songs are more likely to abandon the service.
 
-* The second most relevant feature is the **number of thumb downs**. These types of events are also good indications of customer dissatisfaction. It may be the case that the customer does not like the songs that are being recommended.
 
-* The third most important feature also seems quite relevant, as it represents the **number of times the customer has sought help** in the application.
 
-* Features such as level, number of friends added, number of downgrades or gender are not good indicators of customer's churn.
+
+The best classifier was **Gradient Boosted Trees** with an ensemble of 5 decision trees, because it showed the best F1 score. With this we obtained an accuracy equal to 75,58% and an F1 Score equal to 0.7006.
+
+Then we analyzed the importance of each variable, in order to understand which features have grater influence in user’s churn.
+
+
+
+When looking at the feature importance, the **average number of songs per session** stands out. This means that customers who on average listen to less songs are more likely to churn. The second most relevant feature is the **number of thumb downs**. These types of events are good indications of customer dissatisfaction. The third most important feature also seems quite relevant, as it represents the **total number of sessions per user**.
+
 
 ## Acknowledgements <a name="Licensing"></a>
 
